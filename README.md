@@ -1,5 +1,5 @@
-# :lion: Compose ChatGPT Kotlin - Android Chatbot (In Progress) 
-> _This README is written by ChatGPT_
+# :lion: Compose ChatGPT Kotlin - Android Chatbot
+> _This README is written by Ganesh Divekar
 
 <p align="justify">
 <img src="https://res.cloudinary.com/apideck/image/upload/v1672442492/marketplaces/ckhg56iu1mkpc0b66vj7fsj3o/listings/-4-ans_frontend_assets.images.poe.app_icon.png-26-8aa0a2e5f237894d_tbragv.png?raw=true" width="190px" height=auto align="right" alt="Computador"/>
@@ -34,7 +34,7 @@ Overall, Compose ChatGPT Kotlin is a powerful and flexible chatbot solution that
 2. Setup your Firebase and put file ***google-services.json*** into ***app/***
 3. Obtain an OpenAI API Key from the OpenAI website.
 4. In the ***app/src/main/java/com/chatgptlite/wanted/constants/Constants.kt*** file, add the following line and replace <your-api-key> with your actual API key:
-openAIApiKey=<your-api-key>
+   openAIApiKey=<your-api-key>
 5. Build and run the app on an emulator or physical device.
 
 ## Directory Structure
@@ -101,46 +101,76 @@ The project also contains other files and directories at the root level, includi
 - [ ] Delete conversation
 - [ ] Settings for ChatGPT
 - [ ] Light/Dart Themes
+## 🏛️ Architecture
 
-## Acknowledgments
-- Jetpack Compose
-- Retrofit
-- [OpenAI GPT-3 API](https://beta.openai.com/docs/api-reference/introduction)
-- [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
+**ChatGPT Android** follows the [Google's official architecture guidance](https://developer.android.com/topic/architecture).
 
-## Star History
+![architecture](figures/figure0.png)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=lambiengcode/compose-chatgpt-kotlin-android-chatbot&type=Date)](https://star-history.com/#lambiengcode/compose-chatgpt-kotlin-android-chatbot&Date)
+**ChatGPT Android** was built with [Guide to app architecture](https://developer.android.com/topic/architecture), so it would be a great sample to show how the architecture works in real-world projects.<br>
 
-## Contributing
-Contributions are welcome! Please feel free to submit a pull request or open an issue if you encounter any problems or have suggestions for improvements.
+The overall architecture is composed of two layers; UI Layer and the data layer. Each layer has dedicated components and they each have different responsibilities.
+The arrow means the component has a dependency on the target component following its direction.
 
-## Contact Information
+### Architecture Overview
 
-If you have any questions or suggestions related to this application, please contact me via email: lambiengcode@gmail.com.
+![layer](figures/figure1.png)
 
-## License
+Each layer has different responsibilities below. Basically, they follow [unidirectional event/data flow](https://developer.android.com/topic/architecture/ui-layer#udf).
 
-```terminal
-MIT License
+### UI Layer
 
-Copyright (c) 2022 lambiengcode
+![layer](figures/figure2.png)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+The UI Layer consists of UI elements like buttons, menus, tabs that could interact with users and [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) that holds app states and restores data when configuration changes.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### Data Layer
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+![layer](figures/figure3.png)
+
+The data Layer consists of repositories, which include business logic, such as querying data from the local database and requesting remote data from the network. It is implemented as an offline-first source of business logic and follows the [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) principle.<br>
+
+
+## Modularization
+
+![modules](figures/figure4.png)
+
+**ChatGPT Android** adopted modularization strategies below:
+
+- **Reusability**: Modulizing reusable codes properly enable opportunities for code sharing and limits code accessibility in other modules at the same time.
+
+- **Parallel Building**: Each module can be run in parallel and it reduces the build time.
+
+- **Decentralized focusing**: Each developer team can assign their dedicated module and they can focus on their own modules.
+
+
+## 💯 MAD Score
+
+![summary](https://user-images.githubusercontent.com/24237865/158918011-bc766482-ec83-47dd-9237-d8a226cab263.png)
+
+## 🤝 Contribution
+
+Most of the features are not completed except the chat feature, so anyone can contribute and improve this project following the [Contributing Guideline]
+
+## Find this repository useful? 💙
+Support it by joining __[stargazers](https://github.com/GaneshajDivekar/ChatGPTComposeAndroidLite)__ for this repository. :star: <br>
+Also, __[follow me](https://github.com/GaneshajDivekar)__ on GitHub for my next creations! 🤩
+
+
+# License
+```xml
+Designed and developed by 2023 Ganesh Divekar
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 ```
