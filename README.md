@@ -153,7 +153,7 @@ The data Layer consists of repositories, which include business logic, such as q
 Most of the features are not completed except the chat feature, so anyone can contribute and improve this project following the [Contributing Guideline]
 
 ## Find this repository useful? 💙
-Support it by joining __[stargazers](https://github.com/GaneshajDivekar/ChatGPTComposeAndroidLite)__ for this repository. :star: <br>
+Support it by joining __[stargazers](https://github.com/GaneshajDivekar/ChatGPTCompose_Lite)__ for this repository. :star: <br>
 Also, __[follow me](https://github.com/GaneshajDivekar)__ on GitHub for my next creations! 🤩
 
 
